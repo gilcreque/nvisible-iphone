@@ -1,0 +1,1 @@
+Learning the ways of Objective-C, Xcode, and iOS application development by making an audio application for the music collective [n-Visible](http://n-visible.com/).
