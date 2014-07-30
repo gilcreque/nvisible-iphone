@@ -84,6 +84,7 @@
     
     AudioPlayer *playerManager = [AudioPlayer sharedAudioPlayer];
     [playerManager playMixURL:[self.detailItem.mixURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [playerManager setupNowPlayingInfoCenter:self.detailItem];
     
 }
 

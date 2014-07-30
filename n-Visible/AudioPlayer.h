@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "STKAudioPlayer.h"
+#import "MixModel.h"
 
 @interface AudioPlayer : NSObject
 //{
@@ -20,5 +21,6 @@
 
 + (id) sharedAudioPlayer;
 - (void)playMixURL:(NSString*)mixURL;
+- (void)setupNowPlayingInfoCenter:(MixModel*)currentSong;
 
 @end

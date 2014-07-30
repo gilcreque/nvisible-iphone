@@ -26,6 +26,8 @@
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
     
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
     return YES;
 }
 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9331FDA3198876830036EA20 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9331FDA2198876830036EA20 /* AVFoundation.framework */; };
+		9331FDA5198876890036EA20 /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9331FDA4198876890036EA20 /* CoreAudio.framework */; };
+		9331FDA7198876990036EA20 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9331FDA6198876990036EA20 /* MediaPlayer.framework */; };
 		9392AEF0197EA5DC00198CC4 /* n-visible@60.png in Resources */ = {isa = PBXBuildFile; fileRef = 9392AEEE197EA5DC00198CC4 /* n-visible@60.png */; };
 		9392AEF1197EA5DC00198CC4 /* n-visible@40.png in Resources */ = {isa = PBXBuildFile; fileRef = 9392AEEF197EA5DC00198CC4 /* n-visible@40.png */; };
 		9392AEF4197EA5E200198CC4 /* n-visible@80.png in Resources */ = {isa = PBXBuildFile; fileRef = 9392AEF2197EA5E200198CC4 /* n-visible@80.png */; };
@@ -60,6 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9331FDA2198876830036EA20 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9331FDA4198876890036EA20 /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		9331FDA6198876990036EA20 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		9392AEEE197EA5DC00198CC4 /* n-visible@60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "n-visible@60.png"; sourceTree = "<group>"; };
 		9392AEEF197EA5DC00198CC4 /* n-visible@40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "n-visible@40.png"; sourceTree = "<group>"; };
 		9392AEF2197EA5E200198CC4 /* n-visible@80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "n-visible@80.png"; sourceTree = "<group>"; };
@@ -142,6 +148,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9331FDA7198876990036EA20 /* MediaPlayer.framework in Frameworks */,
+				9331FDA5198876890036EA20 /* CoreAudio.framework in Frameworks */,
+				9331FDA3198876830036EA20 /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +167,9 @@
 		93B90A9B197D706600FD779E = {
 			isa = PBXGroup;
 			children = (
+				9331FDA6198876990036EA20 /* MediaPlayer.framework */,
+				9331FDA4198876890036EA20 /* CoreAudio.framework */,
+				9331FDA2198876830036EA20 /* AVFoundation.framework */,
 				93D03C4B19804C0D00B012D0 /* StreamingKit */,
 				93B90B0C197E08ED00FD779E /* Resources */,
 				93B90AFC197D955C00FD779E /* HUD */,

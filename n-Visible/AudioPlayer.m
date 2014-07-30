@@ -10,6 +10,8 @@
 #import "AudioPlayer.h"
 #import "STKAudioPlayer.h"
 #import "STKAutoRecoveringHTTPDataSource.h"
+#import <MediaPlayer/MediaPlayer.h>
+#import "MixModel.h"
 
 
 @implementation AudioPlayer
@@ -43,6 +45,39 @@
     
     [self.audioPlayer play:mixURL];
     self.audioPlayerIsPlaying = true;
+        
+}
+
+
+- (void)setupNowPlayingInfoCenter:(MixModel*)currentSong
+{
+    //MPMediaItemArtwork *artwork = [currentSong valueForProperty:MPMediaItemPropertyArtwork];
+    
+    MPNowPlayingInfoCenter *infoCenter = [MPNowPlayingInfoCenter defaultCenter];
+    
+    if (currentSong == nil)
+    {
+        infoCenter.nowPlayingInfo = nil;
+        return;
+    }
+    
+    infoCenter.nowPlayingInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                                currentSong.mixTitle, MPMediaItemPropertyTitle,
+                                currentSong.mixDJ, MPMediaItemPropertyArtist, nil];
+                                 //[currentSong valueForKey:MPMediaItemPropertyAlbumTitle], MPMediaItemPropertyAlbumTitle,
+                                 //[currentSong valueForKey:MPMediaItemPropertyAlbumTrackCount], MPMediaItemPropertyAlbumTrackCount,
+                                 //[currentSong valueForKey:MPMediaItemPropertyAlbumTrackNumber], MPMediaItemPropertyAlbumTrackNumber,
+                                 //artwork, MPMediaItemPropertyArtwork,
+                                 //[currentSong valueForKey:MPMediaItemPropertyComposer], MPMediaItemPropertyComposer,
+                                 //[currentSong valueForKey:MPMediaItemPropertyDiscCount], MPMediaItemPropertyDiscCount,
+                                 //[currentSong valueForKey:MPMediaItemPropertyDiscNumber], MPMediaItemPropertyDiscNumber,
+                                 //[currentSong valueForKey:MPMediaItemPropertyGenre], MPMediaItemPropertyGenre,
+                                 //[currentSong valueForKey:MPMediaItemPropertyPersistentID], MPMediaItemPropertyPersistentID,
+                                 //[currentSong valueForKey:MPMediaItemPropertyPlaybackDuration], MPMediaItemPropertyPlaybackDuration
+                                 //[NSNumber numberWithInt:self.mediaCollection.nowPlayingIndex + 1], MPNowPlayingInfoPropertyPlaybackQueueIndex,
+                                 //[NSNumber numberWithInt:[self.mediaCollection count]], MPNowPlayingInfoPropertyPlaybackQueueCount, nil];
+    
+    NSLog(@"Info Set :%@", infoCenter.nowPlayingInfo[MPMediaItemPropertyArtist]);
 }
 
 @end
