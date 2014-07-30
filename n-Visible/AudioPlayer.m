@@ -61,13 +61,15 @@
         return;
     }
     
+    MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:currentSong.mixImage];
+    
     infoCenter.nowPlayingInfo = [NSDictionary dictionaryWithObjectsAndKeys:
                                 currentSong.mixTitle, MPMediaItemPropertyTitle,
+                                artwork, MPMediaItemPropertyArtwork,
                                 currentSong.mixDJ, MPMediaItemPropertyArtist, nil];
                                  //[currentSong valueForKey:MPMediaItemPropertyAlbumTitle], MPMediaItemPropertyAlbumTitle,
                                  //[currentSong valueForKey:MPMediaItemPropertyAlbumTrackCount], MPMediaItemPropertyAlbumTrackCount,
                                  //[currentSong valueForKey:MPMediaItemPropertyAlbumTrackNumber], MPMediaItemPropertyAlbumTrackNumber,
-                                 //artwork, MPMediaItemPropertyArtwork,
                                  //[currentSong valueForKey:MPMediaItemPropertyComposer], MPMediaItemPropertyComposer,
                                  //[currentSong valueForKey:MPMediaItemPropertyDiscCount], MPMediaItemPropertyDiscCount,
                                  //[currentSong valueForKey:MPMediaItemPropertyDiscNumber], MPMediaItemPropertyDiscNumber,

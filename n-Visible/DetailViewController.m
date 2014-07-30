@@ -44,6 +44,7 @@
 
         //self.detailDescriptionLabel.text = self.detailItem.mixTitle;
         self.mixLabel.text = self.detailItem.mixTitle;
+        self.detailItem.mixImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[self.detailItem.mixImageURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
     }
     
     
