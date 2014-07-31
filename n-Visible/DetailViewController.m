@@ -31,24 +31,20 @@
 - (void)configureView
 {
     // Update the user interface for the detail item.
-    if (self.detailItem) {
-        
-//        NSString *imageURLString = [self.detailItem.mixURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        NSURL *imageURL = [NSURL URLWithString:imageURLString];
-//        NSLog(@"image url");
-//        NSData *imageData = [[NSData alloc] initWithContentsOfURL:imageURL];
-//        NSLog(@"data");
-//        UIImage *image = [[UIImage alloc] initWithData:imageData];
-        
-//        self.mixImage.image = image;
-
-        //self.detailDescriptionLabel.text = self.detailItem.mixTitle;
-        self.mixLabel.text = self.detailItem.mixTitle;
-        self.detailItem.mixImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:[self.detailItem.mixImageURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
+    if (self.detailItem)
+    {
+        self.mixTitleLabel.text = self.detailItem.mixTitle;
+        self.mixDJLabel.text = self.detailItem.mixDJ;
+        self.detailItem.mixImage = [UIImage imageWithData:
+                                   [NSData dataWithContentsOfURL:
+                                   [NSURL URLWithString:
+                                   [self.detailItem.mixImageURL
+                                   stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]]]];
+        [self.mixImageView setImage:self.detailItem.mixImage];
+        self.mixDateLabel.text = self.detailItem.mixDate;
     }
     
     
-    //NSLog(@"Song URL : %@", mixURL);
     
 }
 

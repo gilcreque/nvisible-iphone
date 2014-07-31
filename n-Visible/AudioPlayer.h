@@ -17,10 +17,10 @@
 //}
 
 @property (strong, nonatomic) STKAudioPlayer* audioPlayer;
-@property (nonatomic) bool audioPlayerIsPlaying;
 
 + (id) sharedAudioPlayer;
 - (void)playMixURL:(NSString*)mixURL;
 - (void)setupNowPlayingInfoCenter:(MixModel*)currentSong;
-
+- (void)pause;
+- (void)play;
 @end

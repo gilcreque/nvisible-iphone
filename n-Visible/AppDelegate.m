@@ -27,6 +27,7 @@
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
     
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    [self becomeFirstResponder];
     
     return YES;
 }
@@ -51,6 +52,39 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [[UIApplication sharedApplication] endReceivingRemoteControlEvents];
+    [self resignFirstResponder];
+}
+
+-(void)remoteControlReceivedWithEvent:(UIEvent *)receivedEvent
+{
+    NSLog(@"received remote event!");
+    if (receivedEvent.type == UIEventTypeRemoteControl)
+    {
+        AudioPlayer *playerManager = [AudioPlayer sharedAudioPlayer];
+        
+        switch (receivedEvent.subtype)
+        {
+            case UIEventSubtypeRemoteControlPlay:
+                [playerManager pause];
+                break;
+                
+            case  UIEventSubtypeRemoteControlPause:
+                [playerManager pause];
+                break;
+                
+            case  UIEventSubtypeRemoteControlNextTrack:
+                // to change the video
+                break;
+                
+            case  UIEventSubtypeRemoteControlPreviousTrack:
+                // to play the privious video
+                break;
+                
+            default:
+                break;
+        }
+    }
 }
 
 

@@ -29,14 +29,13 @@
 - (id)init {
     if (self = [super init]) {
         _audioPlayer = [[STKAudioPlayer alloc] init];
-        _audioPlayerIsPlaying = NO;
     }
     return self;
 }
 
 - (void)playMixURL:(NSString*)mixURL
 {
-    if (self.audioPlayerIsPlaying)
+    if (self.audioPlayer.state == STKAudioPlayerStateRunning)
     {
         [self.audioPlayer stop];
     }
@@ -44,8 +43,6 @@
     NSLog(@"Song URL : %@", mixURL);
     
     [self.audioPlayer play:mixURL];
-    self.audioPlayerIsPlaying = true;
-        
 }
 
 
@@ -80,6 +77,15 @@
                                  //[NSNumber numberWithInt:[self.mediaCollection count]], MPNowPlayingInfoPropertyPlaybackQueueCount, nil];
     
     NSLog(@"Info Set :%@", infoCenter.nowPlayingInfo[MPMediaItemPropertyArtist]);
+}
+
+- (void)pause
+{
+    [self.audioPlayer pause];
+}
+- (void)play
+{
+    //[self.audioPlayer pla];
 }
 
 @end

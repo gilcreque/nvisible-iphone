@@ -13,9 +13,10 @@
 @interface DetailViewController : UIViewController
 
 @property (strong, nonatomic) MixModel *detailItem;
-@property (weak, nonatomic) IBOutlet UILabel *mixLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *mixImage;
-@property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+@property (weak, nonatomic) IBOutlet UILabel *mixTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *mixDJLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *mixImageView;
+@property (weak, nonatomic) IBOutlet UILabel *mixDateLabel;
 
 
 @end
