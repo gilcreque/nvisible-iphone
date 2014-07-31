@@ -22,5 +22,5 @@
 - (void)playMixURL:(NSString*)mixURL;
 - (void)setupNowPlayingInfoCenter:(MixModel*)currentSong;
 - (void)pause;
-- (void)play;
+- (void)resume;
 @end

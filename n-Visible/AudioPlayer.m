@@ -83,9 +83,9 @@
 {
     [self.audioPlayer pause];
 }
-- (void)play
+- (void)resume
 {
-    //[self.audioPlayer pla];
+    [self.audioPlayer resume];
 }
 
 @end

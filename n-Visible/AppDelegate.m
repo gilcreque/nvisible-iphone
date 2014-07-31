@@ -66,7 +66,7 @@
         switch (receivedEvent.subtype)
         {
             case UIEventSubtypeRemoteControlPlay:
-                [playerManager pause];
+                [playerManager resume];
                 break;
                 
             case  UIEventSubtypeRemoteControlPause:
