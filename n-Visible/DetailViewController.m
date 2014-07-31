@@ -11,6 +11,7 @@
 #import "AudioPlayer.h"
 
 @interface DetailViewController ()
+- (IBAction)buttonPressed;
 - (void)configureView;
 @end
 
@@ -26,6 +27,12 @@
         // Update the view.
         [self configureView];
     }
+}
+
+- (IBAction)buttonPressed {
+    AudioPlayer *playerManager = [AudioPlayer sharedAudioPlayer];
+    [playerManager playMixURL:[self.detailItem.mixURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    [playerManager setupNowPlayingInfoCenter:self.detailItem];
 }
 
 - (void)configureView
@@ -77,12 +84,6 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self configureView];
-    
-    
-    AudioPlayer *playerManager = [AudioPlayer sharedAudioPlayer];
-    [playerManager playMixURL:[self.detailItem.mixURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
-    [playerManager setupNowPlayingInfoCenter:self.detailItem];
-    
 }
 
 - (void)didReceiveMemoryWarning
