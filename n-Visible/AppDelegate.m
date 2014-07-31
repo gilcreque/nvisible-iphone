@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <AVFoundation/AVFoundation.h>
 #import "AudioPlayer.h"
+#import "TestFlight.h"
 
 @interface AppDelegate ()
             
@@ -19,6 +20,11 @@
             
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"testflighttoken" ofType:@"txt"];
+    NSString *testFlightToken = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    
+    [TestFlight takeOff:testFlightToken];
     
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSFontAttributeName : [UIFont fontWithName:@"Autobahn" size:20]}];
 
