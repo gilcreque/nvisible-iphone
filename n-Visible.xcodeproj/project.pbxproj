@@ -58,6 +58,7 @@
 		93D03C6519804C0D00B012D0 /* STKHTTPDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D03C5919804C0D00B012D0 /* STKHTTPDataSource.m */; };
 		93D03C6619804C0D00B012D0 /* STKLocalFileDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D03C5B19804C0D00B012D0 /* STKLocalFileDataSource.m */; };
 		93D03C6719804C0D00B012D0 /* STKQueueEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 93D03C5D19804C0D00B012D0 /* STKQueueEntry.m */; };
+		93F53923198C711500A25704 /* UIImage+Resize.m in Sources */ = {isa = PBXBuildFile; fileRef = 93F53921198C711500A25704 /* UIImage+Resize.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,8 @@
 		93D03C5C19804C0D00B012D0 /* STKQueueEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STKQueueEntry.h; sourceTree = "<group>"; };
 		93D03C5D19804C0D00B012D0 /* STKQueueEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STKQueueEntry.m; sourceTree = "<group>"; };
 		93D03C5E19804C0D00B012D0 /* StreamingKit-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StreamingKit-Prefix.pch"; sourceTree = "<group>"; };
+		93F53921198C711500A25704 /* UIImage+Resize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Resize.m"; sourceTree = "<group>"; };
+		93F53922198C711500A25704 /* UIImage+Resize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Resize.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +231,8 @@
 		93B90AA6197D706600FD779E /* n-Visible */ = {
 			isa = PBXGroup;
 			children = (
+				93F53921198C711500A25704 /* UIImage+Resize.m */,
+				93F53922198C711500A25704 /* UIImage+Resize.h */,
 				93C513451986B95500E6126E /* AudioPlayer.h */,
 				93C513461986B95500E6126E /* AudioPlayer.m */,
 				93B90B07197DD84C00FD779E /* MixTableViewCell.h */,
@@ -515,6 +520,7 @@
 				93D03C5F19804C0D00B012D0 /* NSMutableArray+STKAudioPlayer.m in Sources */,
 				93D03C6219804C0D00B012D0 /* STKCoreFoundationDataSource.m in Sources */,
 				93D03C6119804C0D00B012D0 /* STKAutoRecoveringHTTPDataSource.m in Sources */,
+				93F53923198C711500A25704 /* UIImage+Resize.m in Sources */,
 				93C513471986B95500E6126E /* AudioPlayer.m in Sources */,
 				93B90AF8197D80AB00FD779E /* MixModel.m in Sources */,
 				93B90AF2197D7FF700FD779E /* JSONKeyMapper.m in Sources */,

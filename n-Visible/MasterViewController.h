@@ -8,10 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "MixFeed.h"
+#import "AudioPlayer.h"
 
 @interface MasterViewController : UITableViewController
 
 @property (nonatomic) MixFeed *feed;
-
+-(IBAction)pausePlaying;
+-(IBAction)resumePlaying;
 @end
 
+AudioPlayer *playerManager;
+UIColor *redColor;
+
+NSMutableArray *items;
+UIBarButtonItem *playButton;
+UIBarButtonItem *pauseButton;
+UIBarButtonItem *nowPlayingLabelButton;
+UIBarButtonItem *spacer;
+//UIBarButtonItem *playPauseButton;
+UIBarButtonItem *nowPlayingImageButton;

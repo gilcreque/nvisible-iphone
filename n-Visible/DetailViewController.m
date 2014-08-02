@@ -33,6 +33,7 @@
     AudioPlayer *playerManager = [AudioPlayer sharedAudioPlayer];
     [playerManager playMixURL:[self.detailItem.mixURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     [playerManager setupNowPlayingInfoCenter:self.detailItem];
+    [playerManager setCurrentSong:self.detailItem];
 }
 
 - (void)configureView
@@ -83,6 +84,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.navigationController.toolbarHidden = YES;
+    
     [self configureView];
 }
 

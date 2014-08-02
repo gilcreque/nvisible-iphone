@@ -17,6 +17,7 @@
 //}
 
 @property (strong, nonatomic) STKAudioPlayer* audioPlayer;
+@property (strong, nonatomic) MixModel* currentSong;
 
 + (id) sharedAudioPlayer;
 - (void)playMixURL:(NSString*)mixURL;
