@@ -88,4 +88,45 @@
     [self.audioPlayer resume];
 }
 
+/*
+ * Format the float time values like duration
+ * to format with minutes and seconds
+ */
+-(NSString*)timeFormat:(float)value{
+    
+    float minutes = floor(lroundf(value)/60);
+    float seconds = lroundf(value) - (minutes * 60);
+    
+    int roundedSeconds = lroundf(seconds);
+    int roundedMinutes = lroundf(minutes);
+    
+    NSString *time = [[NSString alloc]
+                      initWithFormat:@"%d:%02d",
+                      roundedMinutes, roundedSeconds];
+    return time;
+}
+
+/*
+ * To set the current Position of the
+ * playing audio File
+ */
+- (void)setCurrentAudioTime:(float)value {
+    [self.audioPlayer seekToTime:(double)value];
+}
+
+/*
+ * Get the time where audio is playing right now
+ */
+- (NSTimeInterval)getCurrentAudioTime {
+    return [self.audioPlayer progress];
+}
+
+/*
+ * Get the whole length of the audio file
+ */
+- (float)getAudioDuration {
+    return (float)self.audioPlayer.duration;
+}
+
+
 @end

@@ -55,7 +55,7 @@
     redColor = [UIColor colorWithRed:255/255.0f green:1/255.0f blue:0/255.0f alpha:1.0f];
     items = [[NSMutableArray alloc] init];
 
-    UIImage *nowPlayingImage = [playerManager.currentSong.mixImage resizedImageToFitInSize:CGSizeMake(40, 40) scaleIfSmaller:YES];
+    UIImage *nowPlayingImage = [playerManager.currentSong.mixImage resizedImageToFitInSize:CGSizeMake(40, 40) scaleIfSmaller:NO];
     UIButton *npImageButton = [[UIButton alloc] init];
     npImageButton.bounds = CGRectMake(0, 0, nowPlayingImage.size.width, nowPlayingImage.size.height);
     [npImageButton setImage:nowPlayingImage forState:UIControlStateNormal];
@@ -111,11 +111,9 @@
     
     pauseButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(pausePlaying)];
     [pauseButton setTintColor:redColor];
-    pauseButton.style = UIBarButtonItemStyleBordered;
 
     playButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(resumePlaying)];
     [playButton setTintColor:redColor];
-    playButton.style = UIBarButtonItemStyleBordered;
    
     switch (playerManager.audioPlayer.state) {
         case STKAudioPlayerStatePlaying:

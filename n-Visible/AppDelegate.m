@@ -19,6 +19,23 @@
 @implementation AppDelegate
             
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        // Check if the user is on a newer iPhone / iPod with a 4-inch screen
+        if ([[UIScreen mainScreen] bounds].size.height == 568) {
+            // The user is on a newer device with a 4-inch screen - load your custom iPhone 5 storyboard
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            UIViewController *initViewController = [storyBoard instantiateInitialViewController];
+            [self.window setRootViewController:initViewController];
+        } else {
+            // The user is on an older device with a 3.5-inch screen - load the regular storyboard
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"MainiPhone4" bundle:nil];
+            UIViewController *initViewController = [storyBoard instantiateInitialViewController];
+            [self.window setRootViewController:initViewController];
+        }
+    }
+    
+    
     // Override point for customization after application launch.
     
     NSString *path = [[NSBundle mainBundle] pathForResource:@"testflighttoken" ofType:@"txt"];

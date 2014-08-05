@@ -24,4 +24,8 @@
 - (void)setupNowPlayingInfoCenter:(MixModel*)currentSong;
 - (void)pause;
 - (void)resume;
+- (void)setCurrentAudioTime:(float)value;
+- (float)getAudioDuration;
+- (NSString*)timeFormat:(float)value;
+- (NSTimeInterval)getCurrentAudioTime;
 @end
