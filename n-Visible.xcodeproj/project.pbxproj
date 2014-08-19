@@ -23,6 +23,7 @@
 		9392AEF1197EA5DC00198CC4 /* n-visible@40.png in Resources */ = {isa = PBXBuildFile; fileRef = 9392AEEF197EA5DC00198CC4 /* n-visible@40.png */; };
 		9392AEF4197EA5E200198CC4 /* n-visible@80.png in Resources */ = {isa = PBXBuildFile; fileRef = 9392AEF2197EA5E200198CC4 /* n-visible@80.png */; };
 		9392AEF5197EA5E200198CC4 /* n-visible@120.png in Resources */ = {isa = PBXBuildFile; fileRef = 9392AEF3197EA5E200198CC4 /* n-visible@120.png */; };
+		93A8793919953F010021FACA /* About.m in Sources */ = {isa = PBXBuildFile; fileRef = 93A8793819953F010021FACA /* About.m */; };
 		93B90AAA197D706600FD779E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B90AA9197D706600FD779E /* main.m */; };
 		93B90AAD197D706600FD779E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B90AAC197D706600FD779E /* AppDelegate.m */; };
 		93B90AB0197D706600FD779E /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 93B90AAF197D706600FD779E /* MasterViewController.m */; };
@@ -93,6 +94,8 @@
 		9392AEEF197EA5DC00198CC4 /* n-visible@40.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "n-visible@40.png"; sourceTree = "<group>"; };
 		9392AEF2197EA5E200198CC4 /* n-visible@80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "n-visible@80.png"; sourceTree = "<group>"; };
 		9392AEF3197EA5E200198CC4 /* n-visible@120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "n-visible@120.png"; sourceTree = "<group>"; };
+		93A8793719953F010021FACA /* About.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = About.h; sourceTree = "<group>"; };
+		93A8793819953F010021FACA /* About.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = About.m; sourceTree = "<group>"; };
 		93B90AA4197D706600FD779E /* n-Visible.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "n-Visible.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B90AA8197D706600FD779E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93B90AA9197D706600FD779E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -237,6 +240,8 @@
 		93B90AA6197D706600FD779E /* n-Visible */ = {
 			isa = PBXGroup;
 			children = (
+				93A8793719953F010021FACA /* About.h */,
+				93A8793819953F010021FACA /* About.m */,
 				93F53921198C711500A25704 /* UIImage+Resize.m */,
 				93F53922198C711500A25704 /* UIImage+Resize.h */,
 				93C513451986B95500E6126E /* AudioPlayer.h */,
@@ -453,6 +458,7 @@
 				TargetAttributes = {
 					93B90AA3197D706600FD779E = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = S3PRFFSJNG;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -543,6 +549,7 @@
 				93B90AF3197D7FF700FD779E /* JSONValueTransformer.m in Sources */,
 				93B90AEE197D7FF700FD779E /* NSArray+JSONModel.m in Sources */,
 				93D03C6619804C0D00B012D0 /* STKLocalFileDataSource.m in Sources */,
+				93A8793919953F010021FACA /* About.m in Sources */,
 				93B90AF1197D7FF700FD779E /* JSONModel+networking.m in Sources */,
 				93B90AAA197D706600FD779E /* main.m in Sources */,
 				933B416C198A8E1A00C6D7B5 /* release_notes.md in Sources */,
@@ -676,6 +683,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -688,6 +696,7 @@
 					"$(PROJECT_DIR)/TestFlightSDK3.0.2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -698,6 +707,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -710,6 +720,7 @@
 					"$(PROJECT_DIR)/TestFlightSDK3.0.2",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

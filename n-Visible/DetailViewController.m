@@ -96,10 +96,10 @@
     [FBGraphObject openGraphObjectForPostWithType:@"passengerpodcast:mix"
                                             title:self.detailItem.mixTitle
                                             image:[self.detailItem.mixImageURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
-                                              url:[self.detailItem.mixURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]
+                                              url:(@"http://n-visible.com/music/mixes/?mixURL=%@", [self.detailItem.mixURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding])
                                       description:[NSString stringWithFormat:@"%@ - %@", self.detailItem.mixDJ, self.detailItem.mixDate]];
     
-    object[@"audio"] = [self.detailItem.mixURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    //object[@"video"] = (@"http://n-visible.com/audioplayer/player.swf?playerID=100&soundFile=%@", [self.detailItem.mixURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
     
     // Create an action
     id<FBOpenGraphAction> action = (id<FBOpenGraphAction>)[FBGraphObject graphObject];

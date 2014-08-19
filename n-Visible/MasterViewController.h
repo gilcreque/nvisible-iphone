@@ -15,6 +15,7 @@
 @property (nonatomic) MixFeed *feed;
 -(IBAction)pausePlaying;
 -(IBAction)resumePlaying;
+-(void)toggleToolbar;
 @end
 
 AudioPlayer *playerManager;

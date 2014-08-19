@@ -29,39 +29,36 @@
 {
     NSLog(@"pause tap");
     [playerManager pause];
-    [items removeLastObject];
-    [items addObject:playButton];
-//    self.toolbarItems = items;
-    [self setToolbarItems:items animated:YES];
-    self.navigationController.toolbarHidden = YES;
-    self.navigationController.toolbarHidden = NO;
+//    [items removeLastObject];
+//    [items addObject:playButton];
+//    [self setToolbarItems:items animated:YES];
+//    self.navigationController.toolbarHidden = YES;
+//    self.navigationController.toolbarHidden = NO;
+    [self toggleToolbar];
 }
 
 -(IBAction)resumePlaying
 {
     NSLog(@"resume tap");
     [playerManager resume];
-    [items removeLastObject];
-    [items addObject:pauseButton];
-//    self.toolbarItems = items;
-    [self setToolbarItems:items];
-    self.navigationController.toolbarHidden = YES;
-    self.navigationController.toolbarHidden = NO;
+//    [items removeLastObject];
+//    [items addObject:pauseButton];
+//    [self setToolbarItems:items];
+//    self.navigationController.toolbarHidden = YES;
+//    self.navigationController.toolbarHidden = NO;
+    [self toggleToolbar];
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)toggleToolbar
 {
-    playerManager = [AudioPlayer sharedAudioPlayer];
-    redColor = [UIColor colorWithRed:255/255.0f green:1/255.0f blue:0/255.0f alpha:1.0f];
-    items = [[NSMutableArray alloc] init];
-
-    UIImage *nowPlayingImage = [playerManager.currentSong.mixImage resizedImageToFitInSize:CGSizeMake(40, 40) scaleIfSmaller:NO];
+    NSMutableArray *items = [[NSMutableArray alloc] init];
+    UIImage *nowPlayingImage = [playerManager.currentSong.mixImage resizedImageToFitInSize:CGSizeMake(44, 44) scaleIfSmaller:NO];
     UIButton *npImageButton = [[UIButton alloc] init];
     npImageButton.bounds = CGRectMake(0, 0, nowPlayingImage.size.width, nowPlayingImage.size.height);
     [npImageButton setImage:nowPlayingImage forState:UIControlStateNormal];
     nowPlayingImageButton = [[UIBarButtonItem alloc] initWithCustomView:npImageButton];
     [items addObject:nowPlayingImageButton];
-
+    
     spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     [items addObject:spacer];
     
@@ -72,49 +69,15 @@
     nowPlayingLabel.text = [NSString stringWithFormat:@"%@\r%@", playerManager.currentSong.mixDJ, playerManager.currentSong.mixTitle];
     nowPlayingLabelButton = [[UIBarButtonItem alloc] initWithCustomView:nowPlayingLabel];
     [items addObject:nowPlayingLabelButton];
-             
-    [items addObject:spacer];
-
-//    UILabel *timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0 , 11.0f, self.view.frame.size.width, 41.0f)];
-//    timeLabel.font = [UIFont fontWithName:@"Avenir-Book" size:8];
-//    timeLabel.numberOfLines = 1;
-//    
-//    int progress = (int) playerManager.audioPlayer.progress;
-//    int progressHours = progress / 3600;
-//    int progressMinutes = (progress - (progressHours * 3600)) / 60;
-//    int progressSeconds = progress - (progressHours * 3600) - (progressMinutes * 60);
-//    
-//    NSMutableString *progressString = [[NSMutableString alloc] init];
-//    if (progressHours > 0)
-//    {
-//        [progressString appendFormat:@"%d:", progressHours];
-//    }
-//    [progressString appendFormat:@"%02d:", progressMinutes];
-//    [progressString appendFormat:@"%02d", progressSeconds];
-//    
-//    int duration = (int) playerManager.audioPlayer.duration;
-//    int durationHours = duration / 3600;
-//    int durationMinutes = (duration - (durationHours * 3600)) / 60;
-//    int durationSeconds = duration - (durationHours * 3600) - (durationMinutes * 60);
-//    
-//    NSMutableString *durationString = [[NSMutableString alloc] init];
-//    if (durationHours > 0)
-//    {
-//        [durationString appendFormat:@"%d:", durationHours];
-//    }
-//    [durationString appendFormat:@"%02d:", durationMinutes];
-//    [durationString appendFormat:@"%02d", durationSeconds];
-//
-//    timeLabel.text = [NSString stringWithFormat:@"%@/%@", progressString, durationString];
-//    UIBarButtonItem *timeLabelButton = [[UIBarButtonItem alloc] initWithCustomView:timeLabel];
     
+    [items addObject:spacer];
     
     pauseButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(pausePlaying)];
     [pauseButton setTintColor:redColor];
-
+    
     playButton = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(resumePlaying)];
     [playButton setTintColor:redColor];
-   
+    
     switch (playerManager.audioPlayer.state) {
         case STKAudioPlayerStatePlaying:
         case STKAudioPlayerStateBuffering:
@@ -130,16 +93,29 @@
             break;
     }
     
-    self.toolbarItems = items;
-       
-    if (playerManager.audioPlayer.state == STKAudioPlayerStateRunning || playerManager.audioPlayer.state == STKAudioPlayerStatePlaying)
+    [self setToolbarItems:items animated:YES];
+    
+    if (playerManager.audioPlayer.state == STKAudioPlayerStatePaused || playerManager.audioPlayer.state == STKAudioPlayerStatePlaying)
     {
         self.navigationController.toolbarHidden = NO;
     }
-    
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    playerManager = [AudioPlayer sharedAudioPlayer];
+    redColor = [UIColor colorWithRed:255/255.0f green:1/255.0f blue:0/255.0f alpha:1.0f];
+    [self.navigationController setToolbarHidden:YES animated:NO];
     self.tableView.backgroundColor = redColor;
-    
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(toggleToolbar)
+                                                 name:@"appDidBecomeActive"
+                                               object:nil];
+}
+
+
+-(void)viewDidAppear:(BOOL)animated
+{
     if (self.feed == nil)
     {
         //show loader view
@@ -158,9 +134,10 @@
                                                                                               
                                                  //reload the table view
                                                  [self.tableView reloadData];
-                                                 
                                              }];
     }
+    
+    [self toggleToolbar];
 }
 
 #pragma mark - table methods
@@ -223,6 +200,8 @@
     MixModel *mixDVC = self.feed.mixes [self.tableView.indexPathForSelectedRow.row];
     //NSLog(@"dvc mix : %@", mixDVC.mixTitle);
     detailController.detailItem = mixDVC;
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:nil action:nil];
+    self.navigationController.navigationBar.tintColor = redColor;
 }
 
 @end
