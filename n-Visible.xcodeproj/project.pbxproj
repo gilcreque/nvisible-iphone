@@ -15,8 +15,8 @@
 		933B41601989F4E700C6D7B5 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = 933B415F1989F4E700C6D7B5 /* play.png */; };
 		933B4162198A77FC00C6D7B5 /* play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 933B4161198A77FC00C6D7B5 /* play@2x.png */; };
 		933B416A198A8E1A00C6D7B5 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 933B4164198A8E1A00C6D7B5 /* libTestFlight.a */; };
-		933B416B198A8E1A00C6D7B5 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 933B4165198A8E1A00C6D7B5 /* README.md */; };
-		933B416C198A8E1A00C6D7B5 /* release_notes.md in Sources */ = {isa = PBXBuildFile; fileRef = 933B4166198A8E1A00C6D7B5 /* release_notes.md */; };
+		933B416B198A8E1A00C6D7B5 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 933B4165198A8E1A00C6D7B5 /* README.md */; };
+		933B416C198A8E1A00C6D7B5 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 933B4166198A8E1A00C6D7B5 /* release_notes.md */; };
 		933B416E198A931900C6D7B5 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 933B416D198A931900C6D7B5 /* libz.dylib */; };
 		933B4170198A98D400C6D7B5 /* testflighttoken.txt in Resources */ = {isa = PBXBuildFile; fileRef = 933B416F198A98D400C6D7B5 /* testflighttoken.txt */; };
 		9392AEF0197EA5DC00198CC4 /* n-visible@60.png in Resources */ = {isa = PBXBuildFile; fileRef = 9392AEEE197EA5DC00198CC4 /* n-visible@60.png */; };
@@ -509,6 +509,8 @@
 				93B90B0B197E08E800FD779E /* autobahn.ttf in Resources */,
 				933B4170198A98D400C6D7B5 /* testflighttoken.txt in Resources */,
 				9392AEF5197EA5E200198CC4 /* n-visible@120.png in Resources */,
+				933B416B198A8E1A00C6D7B5 /* README.md in Resources */,
+				933B416C198A8E1A00C6D7B5 /* release_notes.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,7 +532,6 @@
 				93B90AE9197D7FF700FD779E /* JSONModel+CoreData.m in Sources */,
 				93B90AEC197D7FF700FD779E /* JSONModelClassProperty.m in Sources */,
 				93B90AAD197D706600FD779E /* AppDelegate.m in Sources */,
-				933B416B198A8E1A00C6D7B5 /* README.md in Sources */,
 				93D03C5F19804C0D00B012D0 /* NSMutableArray+STKAudioPlayer.m in Sources */,
 				93D03C6219804C0D00B012D0 /* STKCoreFoundationDataSource.m in Sources */,
 				93D03C6119804C0D00B012D0 /* STKAutoRecoveringHTTPDataSource.m in Sources */,
@@ -552,7 +553,6 @@
 				93A8793919953F010021FACA /* About.m in Sources */,
 				93B90AF1197D7FF700FD779E /* JSONModel+networking.m in Sources */,
 				93B90AAA197D706600FD779E /* main.m in Sources */,
-				933B416C198A8E1A00C6D7B5 /* release_notes.md in Sources */,
 				93D03C6519804C0D00B012D0 /* STKHTTPDataSource.m in Sources */,
 				93B90AB3197D706600FD779E /* DetailViewController.m in Sources */,
 				93B90AEF197D7FF700FD779E /* JSONAPI.m in Sources */,
