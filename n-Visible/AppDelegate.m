@@ -49,6 +49,7 @@
     
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
     
+    //To get remote events from lock screen
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     [self becomeFirstResponder];
     
@@ -63,10 +64,17 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    //AudioPlayer *playerManager = [AudioPlayer sharedAudioPlayer];
+    //[playerManager pause];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    //AudioPlayer *playerManager = [AudioPlayer sharedAudioPlayer];
+    //if (playerManager.audioPlayer.state == STKAudioPlayerStatePaused)
+    //{
+    //    [playerManager resume];
+    //}
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {

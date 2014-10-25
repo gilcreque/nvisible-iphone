@@ -139,7 +139,9 @@
     {
         redColor = [UIColor colorWithRed:255/255.0f green:1/255.0f blue:0/255.0f alpha:1.0f];
         playerManager = [AudioPlayer sharedAudioPlayer];
+        isDurationInfoSet = NO;
         
+ 
         self.currentTimeSlider.hidden = YES;
         self.duration.hidden = YES;
         self.timeElapsed.hidden = YES;
@@ -211,6 +213,12 @@
     
     self.duration.text = [NSString stringWithFormat:@"-%@",
                          [playerManager timeFormat:[playerManager getAudioDuration] - [playerManager getCurrentAudioTime]]];
+
+    if (!isDurationInfoSet && [playerManager getCurrentAudioTime] > 0 && [playerManager getAudioDuration] > 0)
+    {
+        [playerManager setNowPlayingInfoCenterTime];
+        isDurationInfoSet = YES;
+    }
 }
 
 /*
@@ -227,6 +235,7 @@
                                     repeats:NO];
     
     [playerManager setCurrentAudioTime:self.currentTimeSlider.value];
+    
     self.scrubbing = FALSE;
 }
 

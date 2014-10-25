@@ -32,3 +32,4 @@ UIBarButtonItem *playButton;
 UIBarButtonItem *pauseButton;
 UIBarButtonItem *resumeButton;
 UIBarButtonItem *spacer;
+BOOL isDurationInfoSet;

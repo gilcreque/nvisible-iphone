@@ -30,6 +30,13 @@
     if (self = [super init]) {
         _audioPlayer = [[STKAudioPlayer alloc] init];
     }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerStateChange)
+                                                 name:MPMoviePlayerPlaybackStateDidChangeNotification
+     
+                                               object:nil];
+    
     return self;
 }
 
@@ -48,35 +55,53 @@
 
 - (void)setupNowPlayingInfoCenter:(MixModel*)currentSong
 {
-    //MPMediaItemArtwork *artwork = [currentSong valueForProperty:MPMediaItemPropertyArtwork];
-    
-    MPNowPlayingInfoCenter *infoCenter = [MPNowPlayingInfoCenter defaultCenter];
-    
     if (currentSong == nil)
     {
-        infoCenter.nowPlayingInfo = nil;
+        [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo = nil;
         return;
     }
-    
+    else
+    {
     MPMediaItemArtwork *artwork = [[MPMediaItemArtwork alloc] initWithImage:currentSong.mixImage];
     
-    infoCenter.nowPlayingInfo = [NSDictionary dictionaryWithObjectsAndKeys:
-                                currentSong.mixTitle, MPMediaItemPropertyTitle,
-                                artwork, MPMediaItemPropertyArtwork,
-                                currentSong.mixDJ, MPMediaItemPropertyArtist, nil];
-                                 //[currentSong valueForKey:MPMediaItemPropertyAlbumTitle], MPMediaItemPropertyAlbumTitle,
-                                 //[currentSong valueForKey:MPMediaItemPropertyAlbumTrackCount], MPMediaItemPropertyAlbumTrackCount,
-                                 //[currentSong valueForKey:MPMediaItemPropertyAlbumTrackNumber], MPMediaItemPropertyAlbumTrackNumber,
-                                 //[currentSong valueForKey:MPMediaItemPropertyComposer], MPMediaItemPropertyComposer,
-                                 //[currentSong valueForKey:MPMediaItemPropertyDiscCount], MPMediaItemPropertyDiscCount,
-                                 //[currentSong valueForKey:MPMediaItemPropertyDiscNumber], MPMediaItemPropertyDiscNumber,
-                                 //[currentSong valueForKey:MPMediaItemPropertyGenre], MPMediaItemPropertyGenre,
-                                 //[currentSong valueForKey:MPMediaItemPropertyPersistentID], MPMediaItemPropertyPersistentID,
-                                 //[currentSong valueForKey:MPMediaItemPropertyPlaybackDuration], MPMediaItemPropertyPlaybackDuration
-                                 //[NSNumber numberWithInt:self.mediaCollection.nowPlayingIndex + 1], MPNowPlayingInfoPropertyPlaybackQueueIndex,
-                                 //[NSNumber numberWithInt:[self.mediaCollection count]], MPNowPlayingInfoPropertyPlaybackQueueCount, nil];
+    NSMutableDictionary *nowPlayingInfo = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                currentSong.mixTitle, MPMediaItemPropertyTitle,
+                artwork, MPMediaItemPropertyArtwork,
+                currentSong.mixDJ, MPMediaItemPropertyArtist,
+                [NSNumber numberWithInt:1], MPNowPlayingInfoPropertyPlaybackRate,
+                nil];
+                             //[currentSong valueForKey:MPMediaItemPropertyAlbumTitle], MPMediaItemPropertyAlbumTitle,
+                             //[currentSong valueForKey:MPMediaItemPropertyAlbumTrackCount], MPMediaItemPropertyAlbumTrackCount,
+                             //[currentSong valueForKey:MPMediaItemPropertyAlbumTrackNumber], MPMediaItemPropertyAlbumTrackNumber,
+                             //[currentSong valueForKey:MPMediaItemPropertyComposer], MPMediaItemPropertyComposer,
+                             //[currentSong valueForKey:MPMediaItemPropertyDiscCount], MPMediaItemPropertyDiscCount,
+                             //[currentSong valueForKey:MPMediaItemPropertyDiscNumber], MPMediaItemPropertyDiscNumber,
+                             //[currentSong valueForKey:MPMediaItemPropertyGenre], MPMediaItemPropertyGenre,
+                             //[currentSong valueForKey:MPMediaItemPropertyPersistentID], MPMediaItemPropertyPersistentID,
+                             //[currentSong valueForKey:MPMediaItemPropertyPlaybackDuration], MPMediaItemPropertyPlaybackDuration
+                             //[NSNumber numberWithInt:self.mediaCollection.nowPlayingIndex + 1], MPNowPlayingInfoPropertyPlaybackQueueIndex,
+                             //[NSNumber numberWithInt:[self.mediaCollection count]], MPNowPlayingInfoPropertyPlaybackQueueCount, nil];
     
-    NSLog(@"Info Set :%@", infoCenter.nowPlayingInfo[MPMediaItemPropertyArtist]);
+    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:nowPlayingInfo];
+        
+    NSLog(@"Info Set :%@", nowPlayingInfo[MPMediaItemPropertyArtist]);
+    for (id key in [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo) {
+        NSLog(@"key: %@, value: %@ \n", key, [[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo objectForKey:key]);
+        }
+
+    }
+}
+
+- (void)setNowPlayingInfoCenterTime
+{
+    NSMutableDictionary *nowPlayingInfo = [NSMutableDictionary dictionaryWithDictionary:[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo];
+    [nowPlayingInfo setObject:[NSNumber numberWithDouble:self.audioPlayer.progress] forKey:@"MPNowPlayingInfoPropertyElapsedPlaybackTime"];
+    [nowPlayingInfo setObject:[NSNumber numberWithDouble:self.audioPlayer.duration] forKey:@"MPMediaItemPropertyPlaybackDuration"];
+    [[MPNowPlayingInfoCenter defaultCenter] setNowPlayingInfo:nowPlayingInfo];
+    
+    for (id key in [MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo) {
+        NSLog(@"key: %@, value: %@ \n", key, [[MPNowPlayingInfoCenter defaultCenter].nowPlayingInfo objectForKey:key]);
+    }
 }
 
 - (void)pause
@@ -86,6 +111,7 @@
 - (void)resume
 {
     [self.audioPlayer resume];
+    [self setNowPlayingInfoCenterTime];
 }
 
 /*
@@ -112,6 +138,7 @@
  */
 - (void)setCurrentAudioTime:(float)value {
     [self.audioPlayer seekToTime:(double)value];
+    [self setNowPlayingInfoCenterTime];
 }
 
 /*
@@ -128,5 +155,8 @@
     return (float)self.audioPlayer.duration;
 }
 
+- (void)playerStateChange{
+    [self setNowPlayingInfoCenterTime];
+}
 
 @end

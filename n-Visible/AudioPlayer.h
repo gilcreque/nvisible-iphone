@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "STKAudioPlayer.h"
 #import "MixModel.h"
+#import <MediaPlayer/MediaPlayer.h>
+
 
 @interface AudioPlayer : NSObject
 //{
@@ -19,13 +21,16 @@
 @property (strong, nonatomic) STKAudioPlayer* audioPlayer;
 @property (strong, nonatomic) MixModel* currentSong;
 
+
 + (id) sharedAudioPlayer;
 - (void)playMixURL:(NSString*)mixURL;
 - (void)setupNowPlayingInfoCenter:(MixModel*)currentSong;
+- (void)setNowPlayingInfoCenterTime;
 - (void)pause;
 - (void)resume;
 - (void)setCurrentAudioTime:(float)value;
 - (float)getAudioDuration;
 - (NSString*)timeFormat:(float)value;
 - (NSTimeInterval)getCurrentAudioTime;
+- (void)playerStateChange;
 @end
